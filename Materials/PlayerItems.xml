@@ -1,0 +1,12 @@
+<MaterialsLib Name="Default Materials">
+	<!-- NOTE: ALWAYS USE UNIQUE MATERIAL NAMES ACROSS MATERIAL LIBRARIES -->
+	<!-- IN MODEL MATERIALS DEFINITONS USE THEN ONLY MaterialRef TAG -->
+
+	<Material Name="ToolTierDecals">
+		<Parameter Name="Technique">DECAL</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Weapons\PlayerHandItemTiers_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Weapons\PlayerHandItemTiers_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Weapons\PlayerHandItemTiers_add.dds</Parameter>
+		<Parameter Name="AlphamaskTexture">Textures\Models\Weapons\PlayerHandItemTiers_alphamask.dds</Parameter>
+	</Material>
+</MaterialsLib>
