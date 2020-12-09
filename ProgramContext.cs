@@ -66,7 +66,7 @@ namespace MwmBuilder
             m_args.RegisterArg("c", null, null, null);
             m_args.RegisterArg("d", "LODS", null, "Float values separated by space, defining default values for LOD 1-n");
             m_args.RegisterArg("do", "LODSOverride", null, "Float values separated by space, defining overriden values for LOD 1-n");
-            m_args.RegisterArg("x", "MATERIALSLIB", "C:\\KeenSWH\\Sandbox\\MediaBuild\\MEContent\\Materials", "Path to materials library"); //Materials Path argument
+            m_args.RegisterArg("x", "MATERIALSLIB", @"E:\Steam\SteamApps\common\SpaceEngineersModSDK\OriginalContent\Materials", "Path to materials library"); //Materials Path argument
             string[] args = (string[])data;
             try
             {
