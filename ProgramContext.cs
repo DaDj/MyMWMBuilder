@@ -66,7 +66,7 @@ namespace MwmBuilder
             m_args.RegisterArg("c", null, null, null);
             m_args.RegisterArg("d", "LODS", null, "Float values separated by space, defining default values for LOD 1-n");
             m_args.RegisterArg("do", "LODSOverride", null, "Float values separated by space, defining overriden values for LOD 1-n");
-            //  m_args.RegisterArg("x", "MATERIALSLIB", "C:\\KeenSWH\\Sandbox\\MediaBuild\\MEContent\\Materials", "Path to materials library"); //Materials Path argument
+            m_args.RegisterArg("x", "MATERIALSLIB", "C:\\KeenSWH\\Sandbox\\MediaBuild\\MEContent\\Materials", "Path to materials library"); //Materials Path argument
             string[] args = (string[])data;
             try
             {
@@ -105,7 +105,7 @@ namespace MwmBuilder
                     }
                 }
                 string[] strArray = LoadFiles(m_args.GetValue("s"), m_args.GetValue("m"));
-                setMaterialsPathForSource(m_args.GetValue("s")); //Materials Path argument
+                setMaterialsPathForSource(m_args.GetValue("x")); //Materials Path argument
                 ProgramContext.LoadMaterialLibs();
 
 
@@ -137,32 +137,32 @@ namespace MwmBuilder
 
         private void setMaterialsPathForSource(string sourcePath)
         {
-            if (sourcePath == null)
-                return;
-            string[] strArray = sourcePath.Split(';');
-            DirectoryInfo directoryInfo = null;
-            if (strArray.Length >= 1)
-                directoryInfo = Directory.GetParent(strArray[0]);
-            for (; directoryInfo != null; directoryInfo = directoryInfo.Parent)
-            {
-                foreach (DirectoryInfo directory in directoryInfo.GetDirectories())
-                {
-                    if (directory.Name == "Materials")
-                    {
-                        ProgramContext.m_materialsPath = directory.FullName;
-                        return;
-                    }
-                }
-            }
-            ProgramContext.m_logger.LogMessage(MessageType.Error, "Could not find Materials library folder.", "");
-
             //if (sourcePath == null)
             //    return;
+            //string[] strArray = sourcePath.Split(';');
+            //DirectoryInfo directoryInfo = null;
+            //if (strArray.Length >= 1)
+            //    directoryInfo = Directory.GetParent(strArray[0]);
+            //for (; directoryInfo != null; directoryInfo = directoryInfo.Parent)
+            //{
+            //    foreach (DirectoryInfo directory in directoryInfo.GetDirectories())
+            //    {
+            //        if (directory.Name == "Materials")
+            //        {
+            //            ProgramContext.m_materialsPath = directory.FullName;
+            //            return;
+            //        }
+            //    }
+            //}
+            //ProgramContext.m_logger.LogMessage(MessageType.Error, "Could not find Materials library folder.", "");
 
-            //if (!Directory.Exists(Path.GetFullPath(sourcePath)))
-            //    ProgramContext.m_logger.LogMessage(MessageType.Warning, "Could not find Materials library folder.", sourcePath);
-            //else
-            //    ProgramContext.m_materialsPath = Path.GetFullPath(sourcePath);
+            if (sourcePath == null)
+                return;
+
+            if (!Directory.Exists(Path.GetFullPath(sourcePath)))
+                ProgramContext.m_logger.LogMessage(MessageType.Warning, "Could not find Materials library folder.", sourcePath);
+            else
+                ProgramContext.m_materialsPath = Path.GetFullPath(sourcePath);
 
         }
 
