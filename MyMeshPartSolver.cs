@@ -45,8 +45,9 @@ namespace MwmBuilder
             //Custom Change Nr 1.
             //Always set the path to this instead of filepath of textures.
             //This fixes the problem that assimp can't read pbr materials from max properly
-            string filePath = material.Name + "_cm.dds";  //texture.FilePath;
-            //string filePath = texture.FilePath;
+            string filePath = material.Name + "_cm.dds";  
+            //string filePath = texture.FilePath; <-- original
+
             if (filePath.Length < MyMeshPartSolver.ColorMetalSuffix.Length)
                 return;
             string str = filePath.Substring(0, filePath.Length - MyMeshPartSolver.ColorMetalSuffix.Length);
